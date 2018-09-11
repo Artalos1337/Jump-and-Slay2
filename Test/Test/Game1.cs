@@ -13,6 +13,8 @@ namespace Test
         SpriteBatch spriteBatch;
         Screenmanager screenmanager;
         Tasten_Input input;
+        public  static int ScreenWidth;
+        public  static int ScreenHeight;
        
 
         public Game1()
@@ -21,8 +23,11 @@ namespace Test
             Content.RootDirectory = "Content";
             input = new Tasten_Input();
             screenmanager = new Screenmanager();
-            graphics.PreferredBackBufferHeight = 720;
-            graphics.PreferredBackBufferWidth = 1280;
+            IsMouseVisible = true;
+            ScreenWidth = 1280;
+            ScreenHeight = 720;
+            graphics.PreferredBackBufferHeight = ScreenHeight;
+            graphics.PreferredBackBufferWidth = ScreenWidth;
         }
 
        
@@ -69,7 +74,7 @@ namespace Test
        
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
             spriteBatch.Begin();
             screenmanager.Draw(spriteBatch);

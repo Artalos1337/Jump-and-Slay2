@@ -1,0 +1,30 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[submodule]
+	active = .
+[remote "origin"]
+	url = https://github.com/adrianschr/Jump-and-Slay.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[branch "Darkest_Sacrifice"]
+	remote = origin
+	merge = refs/heads/Darkest_Sacrifice
+[branch "Marvin"]
+	remote = origin
+	merge = refs/heads/Marvin
+[branch "Menue"]
+	remote = origin
+	merge = refs/heads/Menue
+[branch "Adrian_Branch"]
+	remote = origin
+	merge = refs/heads/Adrian_Branch
+[branch "Willy"]
+	remote = origin
+	merge = refs/heads/Willy

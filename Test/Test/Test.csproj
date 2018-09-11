@@ -42,14 +42,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
+    <Compile Include="Camera.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Health.cs" />
+    <Compile Include="Map\Collision_Rect.cs" />
+    <Compile Include="Map\Map.cs" />
+    <Compile Include="States\Intro.cs" />
+    <Compile Include="States\Level_1.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screenmanager.cs" />
     <Compile Include="States\Menu.cs" />
+    <Compile Include="States\NewGame.cs" />
+    <Compile Include="States\Option.cs" />
+    <Compile Include="States\SaveGame.cs" />
     <Compile Include="States\Splash.cs" />
     <Compile Include="Tasten_Input.cs" />
+    <Compile Include="Map\Tile.cs" />
+    <Compile Include="Trap.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

@@ -57,6 +57,7 @@ namespace Test
                         current_Button = ButtonState.Load;
                     }
                     break;
+
                 case ButtonState.Load:
                     glow_rect.X = 640 - (glow_tex.Width / 2);
                     glow_rect.Y = 325;
@@ -69,6 +70,7 @@ namespace Test
                         current_Button = ButtonState.NewGame;
                     }
                     break;
+
                 case ButtonState.Option:
                     glow_rect.X = 640 - (glow_tex.Width / 2);
                     glow_rect.Y = 450;
@@ -81,6 +83,7 @@ namespace Test
                         current_Button = ButtonState.Load;
                     }
                     break;
+
                 case ButtonState.Exit:
                     glow_rect.X = 640 - (glow_tex.Width / 2);
                     glow_rect.Y = 575;

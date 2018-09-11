@@ -12,22 +12,33 @@ namespace Test
 {
     class Screenmanager
     {
-        enum Statemachine{ Splash, Menu, Option, Savegame, Intro, Hub, Pause, Inventory, Level_1 };
+        enum Statemachine{ Splash, Menu, Option, SaveGame, Intro, Hub, Pause, Inventory, Level_1 };
 
         Statemachine current_State;
         Tasten_Input Input;
-        TimeSpan timer_splash;
+        TimeSpan timer_splash ,timer_intro;
         Splash splash;
         public Menu menu;
+        Intro intro;
+        Option option;
+        SaveGame savegame;
+        Level_1 level_1;
+        Camera camera;
         
 
         public Screenmanager()
         {
             timer_splash = TimeSpan.FromSeconds(5);
+            timer_intro = TimeSpan.FromSeconds(5);
             current_State = Statemachine.Splash;
             Input = new Tasten_Input();
             splash = new Splash();
             menu = new Menu();
+            intro = new Intro();
+            option = new Option();
+            savegame = new SaveGame();
+            level_1 = new Level_1();
+            camera = new Camera();
         }
 
 
@@ -35,6 +46,10 @@ namespace Test
         {
             splash.Load(content);
             menu.Load(content);
+            intro.Load(content);
+            option.Load(content);
+            savegame.Load(content);
+            level_1.Load(content);
         }
 
 
@@ -64,14 +79,22 @@ namespace Test
                     }
                     if (menu.current_Button == Menu.ButtonState.Load && Input.Tastendruck(Keys.Enter))
                     {
-                        current_State = Statemachine.Savegame;
+                        current_State = Statemachine.SaveGame;
                     }
                     break;
-                case Statemachine.Option:                  
+                case Statemachine.Option:
+                    option.Update(gameTime);
                     break;
-                case Statemachine.Savegame:                   
+                case Statemachine.SaveGame:
+                    
                     break;
-                case Statemachine.Intro:                 
+                case Statemachine.Intro:
+                    timer_intro -= gameTime.ElapsedGameTime;
+                    if (Input.Tastendruck(Keys.Enter) || timer_intro < TimeSpan.Zero)
+                    {
+                        timer_intro = TimeSpan.FromSeconds(5);
+                        current_State = Statemachine.Level_1;
+                    }
                     break;
                 case Statemachine.Hub:
                     break;
@@ -80,6 +103,7 @@ namespace Test
                 case Statemachine.Inventory:
                     break;
                 case Statemachine.Level_1:
+                    level_1.Update(gameTime, camera);
                     break;
             }
         }
@@ -96,10 +120,13 @@ namespace Test
                     menu.Draw(spriteBatch);
                     break;
                 case Statemachine.Option:
+                    option.Draw(spriteBatch);
                     break;
-                case Statemachine.Savegame:
+                case Statemachine.SaveGame:
+                    savegame.Draw(spriteBatch);
                     break;
                 case Statemachine.Intro:
+                    intro.Draw(spriteBatch);
                     break;
                 case Statemachine.Hub:
                     break;
@@ -108,6 +135,7 @@ namespace Test
                 case Statemachine.Inventory:
                     break;
                 case Statemachine.Level_1:
+                    level_1.Draw(spriteBatch);
                     break;
             }
         }

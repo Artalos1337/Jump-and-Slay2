@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Animation_Projekt
+namespace Test
 {
-    class Animation
+    public class Animation
     {
         Texture2D Tex;
         float speed;
@@ -19,10 +19,10 @@ namespace Animation_Projekt
         int width_size, height_size;
         bool islooped, isdrawing, lastframe, Flipped;
         public Rectangle V_rect, S_rect;
-        Vector2 Position;
+        
 
 
-        public Animation(Texture2D tex, Vector2 position, int width, int height, int count,
+        public Animation(Texture2D tex, int width, int height, int count,
             float frame_speed, bool looped, bool lastframe_on, bool flipped)
         {
             Tex = tex;
@@ -30,7 +30,8 @@ namespace Animation_Projekt
             width_size = width;
             height_size = height;
             speed = frame_speed;
-            Position = position;
+            //Position = position;
+            
             islooped = looped;
             lastframe = lastframe_on;
             isdrawing = true;
@@ -39,8 +40,8 @@ namespace Animation_Projekt
 
         public void Update(GameTime gameTime)
         {
-            V_rect.X = (int)Position.X;
-            V_rect.Y = (int)Position.Y;
+            //V_rect.X = (int)Position.X;
+            //V_rect.Y = (int)Position.Y;
 
 
             V_rect.Height = height_size;
@@ -82,8 +83,9 @@ namespace Animation_Projekt
         }
 
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Rectangle rect)
         {
+            V_rect = rect;
             switch (islooped)
             {
                 case true:
