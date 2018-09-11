@@ -15,9 +15,9 @@ namespace Test
         Rectangle Rect;
         
 
-        public Tile(Rectangle rect, int index, ContentManager content)
+        public Tile(Rectangle rect, int index, ContentManager content, string path)
         {
-            texture = content.Load<Texture2D>("Tile" + index);
+            texture = content.Load<Texture2D>(path + "/Tile" + index);
             Rect = rect;
             
         }

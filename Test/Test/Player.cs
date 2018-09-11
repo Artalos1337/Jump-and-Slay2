@@ -14,7 +14,7 @@ namespace Test
     {
         public enum PlayerState { Idle, Run_L, Run_R, Jump, Death};
         public PlayerState current;
-        Animation Idle,IdleL, Run,RunL, Jump,JumpL;
+        Animation Idle, IdleL, Run, RunL, Jump, JumpL, Attack; 
         public  Texture2D TestSprite,blanc_image, death_tex;
         Vector2 velocity;
         private TimeSpan jump_timer = TimeSpan.FromMilliseconds(30);
@@ -40,8 +40,9 @@ namespace Test
             T_input = new Tasten_Input();
             current = PlayerState.Idle;
             jump_available = true;
-            
-            
+            position = new Vector2();
+
+
         }
 
    public void Load(ContentManager content)
@@ -50,7 +51,7 @@ namespace Test
             IdleL = new Animation(content.Load<Texture2D>("Idle"), 3076, 369, 10, 0.3f, true, false, true);
             Run = new Animation(content.Load<Texture2D>("Walk"), 3081, 369, 10, 1.3f, true, false,false);
             RunL = new Animation(content.Load<Texture2D>("Walk"), 3081, 369, 10, 1.3f, true, false, true);
-            position = new Vector2(100,80);
+            //position = new Vector2(100,80);
             
             TestSprite = content.Load<Texture2D>("TestSprite");
             blanc_image = content.Load<Texture2D>("blanc_image");
@@ -74,7 +75,7 @@ namespace Test
           
             player_rect.X = (int)position.X;
             player_rect.Y = (int)position.Y;
-
+    
             border_left.X = (int)position.X - border_margin;
             border_left.Y = (int)position.Y;
             border_right.X = (int)position.X + TestSprite.Width - (TestSprite.Width/4) + border_margin;

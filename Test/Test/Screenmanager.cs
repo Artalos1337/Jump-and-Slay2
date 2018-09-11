@@ -12,7 +12,7 @@ namespace Test
 {
     class Screenmanager
     {
-        enum Statemachine{ Splash, Menu, Option, SaveGame, Intro, Hub, Pause, Inventory, Level_1 };
+        enum Statemachine{ Splash, Menu, Option, SaveGame, Intro, Hub, Pause, Inventory, Level_1, Level_2 };
 
         Statemachine current_State;
         Tasten_Input Input;
@@ -22,8 +22,9 @@ namespace Test
         Intro intro;
         Option option;
         SaveGame savegame;
-        Level_1 level_1;
-        Camera camera;
+        //Level_1 level_1;
+        Level_2 level_2;
+        Camera _camera;
         
 
         public Screenmanager()
@@ -37,8 +38,9 @@ namespace Test
             intro = new Intro();
             option = new Option();
             savegame = new SaveGame();
-            level_1 = new Level_1();
-            camera = new Camera();
+            //level_1 = new Level_1();
+            level_2= new Level_2();
+            _camera = new Camera();
         }
 
 
@@ -49,7 +51,8 @@ namespace Test
             intro.Load(content);
             option.Load(content);
             savegame.Load(content);
-            level_1.Load(content);
+            //level_1.Load(content);
+            level_2.Load(content);
         }
 
 
@@ -93,7 +96,8 @@ namespace Test
                     if (Input.Tastendruck(Keys.Enter) || timer_intro < TimeSpan.Zero)
                     {
                         timer_intro = TimeSpan.FromSeconds(5);
-                        current_State = Statemachine.Level_1;
+                        //current_State = Statemachine.Level_1;
+                        current_State = Statemachine.Level_2;
                     }
                     break;
                 case Statemachine.Hub:
@@ -102,14 +106,21 @@ namespace Test
                     break;
                 case Statemachine.Inventory:
                     break;
-                case Statemachine.Level_1:
-                    level_1.Update(gameTime, camera);
+                //case Statemachine.Level_1:
+                //    level_1.Update(gameTime, camera);
+                //    break;
+                case Statemachine.Level_2:
+                    level_2.Update(gameTime, _camera);
                     break;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            if (current_State == Statemachine.Level_2)
+                spriteBatch.Begin(transformMatrix: _camera.Transform);
+            else spriteBatch.Begin(); 
+
             switch (current_State)
             {
                 case Statemachine.Splash:
@@ -134,10 +145,14 @@ namespace Test
                     break;
                 case Statemachine.Inventory:
                     break;
-                case Statemachine.Level_1:
-                    level_1.Draw(spriteBatch);
+                //case Statemachine.Level_1:
+                //    level_1.Draw(spriteBatch);
+                //    break;
+                case Statemachine.Level_2:
+                    level_2.Draw(spriteBatch, _camera);
                     break;
             }
+            spriteBatch.End();
         }
     }
 

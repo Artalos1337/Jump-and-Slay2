@@ -43,6 +43,7 @@ namespace Test
         {
             
             spriteBatch = new SpriteBatch(GraphicsDevice);
+			
             screenmanager.Load(Content);
 
         }
@@ -76,9 +77,9 @@ namespace Test
         {
             GraphicsDevice.Clear(Color.White);
 
-            spriteBatch.Begin();
+            //spriteBatch.Begin();
             screenmanager.Draw(spriteBatch);
-            spriteBatch.End();
+            //spriteBatch.End();
 
             base.Draw(gameTime);
         }

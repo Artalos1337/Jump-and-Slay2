@@ -12,9 +12,12 @@ namespace Test
     public class Map
     {
 
-        private List<Tile> Tiles = new List<Tile>();
+        ///*private List<Tile> Tiles = new List<Tile>()*/;
         private List<Collision_Rect> Colls = new List<Collision_Rect>();
         private List<Trap> Traps = new List<Trap>();
+        public List<Tile> Tiles = new List<Tile>();
+        public List<Tile> Layer = new List<Tile>();
+        public List<Tile> Layer_2 = new List<Tile>();
         Collision_Rect tr;
         
         ContentManager Content;
@@ -28,68 +31,253 @@ namespace Test
             
         }
 
-        public void createMap(int[,] map, int size)
+               public void createMap(int[,] map, int size)
         {
 
             for (int x = 0; x < map.GetLength(1); x++)
             {
                 for (int y = 0; y < map.GetLength(0); y++)
                 {
-                    int number = map[y, x];    
-                    // Für mehr Tiles, diesen Part klonen
-                    if( number == 1)
+                    int number = map[y, x];
+                 
+                    if ( number == 1)
                     {
-                        Tiles.Add(new Tile(new Rectangle(x*size,y*size,size,size), number, Content));
-                        
+                        Tiles.Add(new Tile(new Rectangle(x *size, y*size, size, size), number, Content,"Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
                     }
                     if (number == 2)
                     {
-                        Tiles.Add(new Tile(new Rectangle(x* size, y*size, size, size), number, Content));
-                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));                      
-                    }
-                    if (number == 4)
-                    {
-                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content));
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
                         Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
                     }
-                    if (number == 5)
-                    {
-                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content));
-                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
-                    }
-                    if (number == 7)
-                    {
-                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content));
-                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
-                    }
-                    if (number == 8)
-                    {
-                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content));
-                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
-                    }
-                    if (number == 9)
-                    {
-                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content));
-                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
-                    }
-                    // Fallen
+
                     if (number == 3)
                     {
-                        Traps.Add(new Trap(new Rectangle(x * size, y * size, size, size ),number, Content));
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
                     }
+
+                    if (number == 4)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
+                    if (number == 5)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
                     if (number == 6)
                     {
-                        Traps.Add(new Trap(new Rectangle(x * size, y * size, size, size), number, Content));
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
+                    if (number == 7)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                    }
+
+                    if (number == 8)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
+                    if (number == 9)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
                     }
 
 
+
+                    if (number == 10)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
+
+                    if (number == 11)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
+
+                    if (number == 13)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
+                    if (number == 14)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
+
+                    if (number == 15)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
+                    if (number == 16)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
+                    if (number == 17)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
+
+                    if (number == 18)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
+                    if (number == 19)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
+
+                    if (number == 20)
+                    {
+                        Tiles.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "Graveyard"));
+                        Colls.Add(new Collision_Rect(x * size, y * size, size, size, Content));
+                    }
                     width = (x + 1) * size;
                     height = (y + 1) * size;
                 }
             }
         }
 
-       
+        public void createMapLayer2(int[,] map, int size)
+        {
+
+            for (int x = 0; x < map.GetLength(1); x++)
+            {
+                for (int y = 0; y < map.GetLength(0); y++)
+                {
+                    int number = map[y, x];
+                    
+
+                    if (number == 18) // Bush_1
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size*2, size), number, Content, "GraveYardLayer2"));
+                    }
+
+
+                    if (number == 17) // Zweier_Bone 
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "GraveYardLayer2"));
+                    }
+      
+
+                    if (number == 46) // Tombstone_2
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size, size*2), number, Content, "GraveYardLayer2"));
+                    }
+
+                    if (number == 48) // Arrow Sign
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "GraveYardLayer2"));
+                    }
+
+                    if (number == 15) // Sekelton Head
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "GraveYardLayer2"));
+                    }
+
+
+                    if (number == 66) // Dreier_Bone (30 Grad)
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "GraveYardLayer2"));
+                    }
+
+
+                    if (number == 16) // Dreier_Bone
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "GraveYardLayer2"));
+                    }
+
+                    if (number == 2) // Bush_2
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size*2, size), number, Content, "GraveYardLayer2"));
+                    }
+
+                    if (number == 44) // Tombstone_1
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size, size*2), number, Content, "GraveYardLayer2"));
+                    }
+
+                    if (number == 32) // Skeleton Leiche
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size*2, size), number, Content, "GraveYardLayer2"));
+                    }
+
+                    if (number == 67) // Sekelton Head (180 Grad)
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "GraveYardLayer2"));
+                    }
+
+                    if (number == 68) // Dreier_ Bone (90 Grad)
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size, size), number, Content, "GraveYardLayer2"));
+                    }
+
+                    if (number == 20) // Baum
+                    {
+                        Layer.Add(new Tile(new Rectangle(x * size, y * size, size*3, size*4), number, Content, "GraveYardLayer2"));
+                    }
+
+                    width = (x + 1) * size;
+                    height = (y + 1) * size;
+                }
+            }
+        }
+        //TRAPS BABY 
+        public void createMapLayer3(int[,] map, int size)
+        {
+
+            for (int x = 0; x < map.GetLength(1); x++)
+            {
+                for (int y = 0; y < map.GetLength(0); y++)
+                {
+                    int number = map[y, x];
+              
+
+                    if (number == 1) // Stacheln runter
+                    {
+                        Layer_2.Add(new Tile(new Rectangle(x * size, y * size, size*2, size), number, Content, "GraveYardLayer3"));
+                    }
+
+                    if (number == 2) // Stacheln hoch
+                    {
+                        Layer_2.Add(new Tile(new Rectangle(x * size, y * size, size*2, size), number, Content, "GraveYardLayer3"));
+                    }
+
+                    if (number == 3) // Stacheln seitlich
+                    {
+                        Layer_2.Add(new Tile(new Rectangle(x * size, y * size, size, size*2), number, Content, "GraveYardLayer3"));
+                    }
+
+                    width = (x + 1) * size;
+                    height = (y + 1) * size;
+                }
+            }
+        }
 
         public void Update(Player p, GameTime gameTime)
         {
@@ -160,11 +348,11 @@ namespace Test
                 t.Draw(spriteBatch);
             }
 
-            // Debug für Tile Borders
-            //foreach (Collision_Rect cr in Colls)
-            //{
-            //    cr.Draw(spriteBatch);
-            //}
+            //Debug für Tile Borders
+            foreach (Collision_Rect cr in Colls)
+            {
+                cr.Draw(spriteBatch);
+            }
         }
     }
 }
