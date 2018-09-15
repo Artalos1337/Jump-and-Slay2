@@ -31,7 +31,7 @@ namespace Test
             Border_left = new Rectangle(posx , posy, (width / 4), height);
             Border_up = new Rectangle(posx, posy, width, (height/4));
             Border_down = new Rectangle(posx,posy + height - (height/4),width, (height/4));
-            blanc_image = content.Load<Texture2D>("/blanc_image");
+            blanc_image = content.Load<Texture2D>("blanc_image");
         }
 
         public void Update(GameTime gameTime, Rectangle player_border_L, Rectangle player_border_R, 

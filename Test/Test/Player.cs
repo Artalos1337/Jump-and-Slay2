@@ -21,6 +21,7 @@ namespace Test
         public Vector2 position;
         public Rectangle player_rect;
         public Rectangle border_left, border_right, border_top, border_down;
+        public Rectangle Collision_border;
         public float gravity;
         private int border_margin = 8;
         private Tasten_Input T_input;
@@ -36,11 +37,12 @@ namespace Test
             border_left = new Rectangle();
             border_right = new Rectangle();
             border_top = new Rectangle();
-            border_down = new Rectangle();          
+            border_down = new Rectangle();
+            Collision_border = new Rectangle();
             T_input = new Tasten_Input();
             current = PlayerState.Idle;
             jump_available = true;
-            position = new Vector2();
+            position = new Vector2(100,100);
 
 
         }
@@ -67,6 +69,8 @@ namespace Test
             border_top.Height = TestSprite.Height/4;
             border_down.Width = TestSprite.Width;
             border_down.Height = TestSprite.Height/4;
+            Collision_border.Width = 200;
+            Collision_border.Height = 200;
             
           
         }
@@ -75,7 +79,9 @@ namespace Test
           
             player_rect.X = (int)position.X;
             player_rect.Y = (int)position.Y;
-    
+            Collision_border.X = (int)position.X + TestSprite.Width / 2 - 100;
+            Collision_border.Y = (int)position.Y + TestSprite.Height / 2 - 100;
+
             border_left.X = (int)position.X - border_margin;
             border_left.Y = (int)position.Y;
             border_right.X = (int)position.X + TestSprite.Width - (TestSprite.Width/4) + border_margin;
@@ -213,6 +219,7 @@ namespace Test
             spriteBatch.Draw(blanc_image, border_right, Color.Aqua);
             spriteBatch.Draw(blanc_image, border_top, Color.Aqua);
             spriteBatch.Draw(blanc_image, border_down, Color.Aqua);
+            spriteBatch.Draw(blanc_image, Collision_border, Color.Violet);
         }
     }
 }
