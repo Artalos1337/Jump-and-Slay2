@@ -14,7 +14,7 @@ namespace Test
     {
         public enum PlayerState { Idle, Run_L, Run_R, Jump, Death};
         public PlayerState current;
-        Animation Idle, IdleL, Run, RunL, Jump, JumpL, Attack; 
+        Animation Idle, IdleL, Run, RunL, Jump, JumpL, Attack, AttackL, Death; 
         public  Texture2D TestSprite,blanc_image, death_tex;
         Vector2 velocity;
         private TimeSpan jump_timer = TimeSpan.FromMilliseconds(30);
@@ -53,11 +53,19 @@ namespace Test
             IdleL = new Animation(content.Load<Texture2D>("Idle"), 3076, 369, 10, 0.3f, true, false, true);
             Run = new Animation(content.Load<Texture2D>("Walk"), 3081, 369, 10, 1.3f, true, false,false);
             RunL = new Animation(content.Load<Texture2D>("Walk"), 3081, 369, 10, 1.3f, true, false, true);
+            Jump = new Animation(content.Load<Texture2D>("Jump"), 3081, 369, 10, 1.3f, true, false, false);
+            JumpL = new Animation(content.Load<Texture2D>("Jump"), 3081, 369, 10, 1.3f, true, false, true);
+            Attack = new Animation(content.Load<Texture2D>("Attack"), 3081, 369, 10, 1.3f, true, false, false);
+            AttackL = new Animation(content.Load<Texture2D>("Attack"), 3081, 369, 10, 1.3f, true, false, true);
+            Death = new Animation(content.Load<Texture2D>("Death"), 3081, 369, 10, 1.3f, true, false, true);
+           
+
+
             //position = new Vector2(100,80);
-            
+
             TestSprite = content.Load<Texture2D>("TestSprite");
             blanc_image = content.Load<Texture2D>("blanc_image");
-            death_tex = content.Load<Texture2D>("death_image");
+            //death_tex = content.Load<Texture2D>("death_image");
           
             player_rect.Width = TestSprite.Width;
             player_rect.Height = TestSprite.Height;
