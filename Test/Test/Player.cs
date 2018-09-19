@@ -12,9 +12,9 @@ namespace Test
 {
     public class Player
     {
-        public enum PlayerState { Idle, Run_L, Run_R, Jump, Death};
+        public enum PlayerState { Idle, Run_L, Run_R, Jump_L, Jump_R, Death};
         public PlayerState current;
-        Animation Idle, IdleL, Run, RunL, Jump, JumpL, Attack, AttackL, Death; 
+        Animation Idle, IdleL, Run, RunL, Jump, JumpL, Attack, AttackL,Death; 
         public  Texture2D TestSprite,blanc_image, death_tex;
         Vector2 velocity;
         private TimeSpan jump_timer = TimeSpan.FromMilliseconds(30);
@@ -118,6 +118,8 @@ namespace Test
 
             Run.Update(gameTime);
             RunL.Update(gameTime);
+            Jump.Update(gameTime);
+            JumpL.Update(gameTime);
             
 
             switch (current)
@@ -131,6 +133,7 @@ namespace Test
                     }
                      else Idle.Update(gameTime);
                     break;
+
                 case PlayerState.Run_L:
                     flipped = true;
                     if (!Block_R) { velocity.X = -4f; } else { velocity.X = 0f; }                
@@ -139,6 +142,7 @@ namespace Test
                         current = PlayerState.Idle;
                     }
                     break;
+
                 case PlayerState.Run_R:
                     flipped = false;
                     if (!Block_L) { velocity.X = 4f; }else { velocity.X = 0f; }
@@ -147,9 +151,17 @@ namespace Test
                         current = PlayerState.Idle;
                     }
                     break;
-                case PlayerState.Jump:
+
+                case PlayerState.Jump_R:
+                    flipped = false;
                     jump_available = true;
                     break;
+
+                case PlayerState.Jump_L:
+                    flipped = true;
+                    jump_available = true;
+                    break;
+
                 case PlayerState.Death:
                     velocity.X = 0f;
                     break;
@@ -210,13 +222,19 @@ namespace Test
                     
                     Run.Draw(spriteBatch, player_rect);
                     break;
-                case PlayerState.Jump:
-                    // Idle Test
-                    spriteBatch.Draw(TestSprite, player_rect, Color.White);
+                case PlayerState.Jump_L:
+                   
+                    JumpL.Draw(spriteBatch, player_rect);
                     break;
-                case PlayerState.Death:
-                    spriteBatch.Draw(death_tex, player_rect, Color.White);
+                case PlayerState.Jump_R:
+                 
+                    Jump.Draw(spriteBatch, player_rect);
                     break;
+
+                //case PlayerState.Death:
+
+                //    spriteBatch.Draw(spriteBatch, player_rect);
+                //    break;
             }
 
 
